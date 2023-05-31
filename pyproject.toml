@@ -20,6 +20,13 @@ dev-dependencies = [ "ruff~=0.0.270", "pyright~=1.1.311", "pytest~=7.3.1", "pyte
 allow-direct-references = true
 
 [tool.rye.scripts]
+lint = { chain = ["lint:ruff", "lint:pyright"] }
+"lint:ruff" = "ruff check ."
+"lint:pyright" = "pyright"
+format = { chain = ["format:black", "format:ruff"] }
+"format:black" = "black ."
+"format:ruff" = "ruff --fix ."
+
 [tool.black]
 line-length = 79
 target-version = ["py311"]
