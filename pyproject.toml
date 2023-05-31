@@ -26,6 +26,7 @@ lint = { chain = ["lint:ruff", "lint:pyright"] }
 format = { chain = ["format:black", "format:ruff"] }
 "format:black" = "black ."
 "format:ruff" = "ruff --fix ."
+hana-script = "python -m hana_script.main --audio-file"
 
 [tool.black]
 line-length = 79
