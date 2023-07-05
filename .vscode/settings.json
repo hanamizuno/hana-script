@@ -1,15 +1,16 @@
 {
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.linting.lintOnSave": true,
-    "python.formatting.provider": "none",
-    "python.formatting.blackArgs": [
-        "--line-length",
-        "79"
-    ],
-    "python.testing.pytestEnabled": true,
+    "black-formatter.importStrategy": "fromEnvironment",
     "editor.formatOnSave": true,
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    }
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    },
+    "python.formatting.provider": "none",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "ruff.importStrategy": "fromEnvironment"
 }
