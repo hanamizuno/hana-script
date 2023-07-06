@@ -24,4 +24,4 @@ jobs:
       - name: Install Rye dependencies
         run: rye sync
       - name: Run linters
-        run: rye lint
+        run: rye run lint
