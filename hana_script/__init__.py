@@ -1,2 +1,1 @@
-def hello():
-    return "Hello from hana-script!"
+"""hana-script package."""
