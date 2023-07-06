@@ -1,0 +1,27 @@
+name: lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: editorconfig-checker/action-editorconfig-checker@main
+      - name: Check files with .editorconfig
+        run: editorconfig-checker
+      - name: Install Rye
+        run: |
+          curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
+          echo "$HOME/.rye/shims" >> $GITHUB_PATH
+      - name: Install Rye dependencies
+        run: rye sync
+      - name: Run linters
+        run: rye lint
