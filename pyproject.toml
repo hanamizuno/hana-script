@@ -42,6 +42,17 @@ target-version = ["py311"]
 [tool.ruff]
 line-length = 79
 target-version = "py311"
+select = [
+    # https://beta.ruff.rs/docs/rules/
+    "E", "F", "W", "C90", "I", "N", "D", "UP",
+    "B", "A", "COM", "C4", "EM", "FA", "ISC", "INP",
+    "PIE", "PYI", "PT", "Q", "SLF", "SIM", "TCH", "PTH",
+    "ERA", "PGH", "PLR", "PLW", "RUF"
+]
+ignore = ["D203", "D213"]
+
+[tool.ruff.pydocstyle]
+convention = "google"
 
 [tool.pyright]
 typeCheckingMode = "strict"

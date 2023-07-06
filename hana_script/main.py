@@ -1,4 +1,4 @@
-"""hana-script"""
+"""hana-script."""
 import sys
 from argparse import ArgumentParser
 from logging import DEBUG, Formatter, StreamHandler, getLogger
@@ -10,7 +10,8 @@ from hana_script.transcription import transcribe_audio
 logger = getLogger(__name__)
 logger.setLevel(DEBUG)
 formatter = Formatter(
-    "[%(levelname)s]%(asctime)s - %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
+    "[%(levelname)s]%(asctime)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
 )
 stream_handler = StreamHandler(sys.stdout)
 stream_handler.setLevel(DEBUG)
@@ -19,7 +20,14 @@ logger.addHandler(stream_handler)
 
 
 def main(audio_file_path_str: str) -> None:
-    """Main function."""
+    """Generate a transcription for an audio file.
+
+    Args:
+        audio_file_path_str (str): The path to the audio file.
+
+    Returns:
+        None
+    """
     audio_file_path = Path(audio_file_path_str)
     audio = load_audio(audio_file_path)
     logger.info(f"Loaded {audio_file_path}")
@@ -35,7 +43,7 @@ def main(audio_file_path_str: str) -> None:
     logger.info(f"Transcription:\n{transcription}")
 
     output_file_path = audio_file_path.with_suffix(".txt")
-    with open(output_file_path, "w") as f:
+    with output_file_path.open("w") as f:
         f.write(transcription)
 
 

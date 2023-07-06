@@ -30,10 +30,16 @@ def transcribe_audio_file(audio_file_path: Path) -> str:
     https://platform.openai.com/docs/api-reference/audio/create
     """
     if audio_file_path.suffix in AUDIO_SUFFIXES:
-        raise ValueError("File type not supported.")
-    with open(audio_file_path, "rb") as f:
-        response = openai.Audio.transcribe("whisper-1", file=f, language="ja", response_format="verbose_json")  # type: ignore  # noqa: E501
-        text = cast(str, response.text)  # type: ignore
+        msg = "File type not supported."
+        raise ValueError(msg)
+    with audio_file_path.open("rb") as f:
+        response = openai.Audio.transcribe(  # type: ignore reportUnknownMemberType # noqa: E501
+            "whisper-1",
+            file=f,
+            language="ja",
+            response_format="verbose_json",
+        )
+        text = cast(str, response.text)  # type: ignore reportUnknownMemberType
 
     return text
 
