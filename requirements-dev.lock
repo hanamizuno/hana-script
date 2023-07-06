@@ -95,6 +95,7 @@ pyannote-pipeline==2.3
 pycparser==2.21
 pydantic==1.10.8
 pydub==0.25.1
+pydub-stubs==0.25.1.0
 pygments==2.15.1
 pyjwt==2.7.0
 pyparsing==3.0.9
